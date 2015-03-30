@@ -1,4 +1,4 @@
-// Callback json file handling
+// 1 Callback json file handling
 fs.readFile("file.json", function(err, val) {
     if( err ) {
         console.error("unable to read file");
@@ -14,7 +14,7 @@ fs.readFile("file.json", function(err, val) {
     }
 });
 
-// Promise based json file handling
+// 2 Promise based json file handling
 fs.readFileAsync("file.json").then(JSON.parse).then(function(val) {
     console.log(val.success);
 })
@@ -27,7 +27,7 @@ fs.readFileAsync("file.json").then(JSON.parse).then(function(val) {
     console.error("unable to read file, because: ", e.message);
 });
 
-// Synchronous json file handling
+// 3 Synchronous json file handling
 try {
     var val = JSON.parse(fs.readFileSync("file.json"));
     console.log(val.success);
@@ -40,5 +40,15 @@ catch(Error e) {
 // Notice how much harder to read the async code is compared to Promise code
 // Promises (bluebird) allows finer control over error handling
 
+// 4 - Bonus! bluebird predicate errors
+function clientError(e) {
+    return e.code >= 400 && e.code < 500;
+}
+
+request("http://www.google.com").then(function(contents){
+    console.log(contents);
+}).catch(clientError, function(e){
+   //A client error like 400 Bad Request happened
+});
 
 // From https://github.com/petkaantonov/bluebird#error-handling
