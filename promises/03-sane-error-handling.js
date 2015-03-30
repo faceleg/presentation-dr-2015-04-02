@@ -49,6 +49,8 @@ request("http://www.google.com").then(function(contents){
     console.log(contents);
 }).catch(clientError, function(e){
    //A client error like 400 Bad Request happened
-});
+}).finally(function() {
+    console.log('I get called no matter what!')
+})
 
 // From https://github.com/petkaantonov/bluebird#error-handling
