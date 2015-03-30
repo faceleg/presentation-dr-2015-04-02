@@ -1,19 +1,18 @@
 var db = require('./db/callbackDb');
 
 db.set('key1', 'value1', function(err) {
-    if(err) throw err;
+    if(err) throw err;  // Replicated for each callback
 
     db.set('key2', 'value2', function(err) {
-        if(err) throw err;
+        if(err) throw err;  // Replicated for each callback
 
         db.set('key3', 'value3', function(err) {
-            if(err) throw err;
-
-            var str = '';
+            if(err) throw err;  // Replicated for each callback
+    
             db.get('key1', function(err, value) {
                 if(err) throw err;
 
-                str += value + ' - ';
+                var str += value + ' - ';
 
                 console.log(str);
             });
@@ -21,4 +20,4 @@ db.set('key1', 'value1', function(err) {
     });
 });
 
-// Example from 
+// Example from http://survivejs.com/common_problems/pyramid.html
