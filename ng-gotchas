@@ -1,0 +1,11 @@
+<script>
+  angular.module('app')
+    .controller('ExampleController', function($scope) {
+      $scope.firstName = 'faceleg';
+    });
+</script>
+
+<div ng-controller="ExampleController">
+  <input ng-model="firstName"/>
+</div>
+
