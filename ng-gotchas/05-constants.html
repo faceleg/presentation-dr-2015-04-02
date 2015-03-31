@@ -7,7 +7,7 @@
     <meta name="url_three" content="https://ktonnage-dev.devtranzrail.co.nz:11443/ui">
 
     <meta name="user" content="testuser">
-    <meta name="roles" content="planning,planning_admin,capacity_admin,logistics,logistics_admin,logistics_operations">
+    <meta name="roles" content="permission_one,permission_two">
     <script>
       angular.module('app', [])
       
@@ -37,8 +37,8 @@
           function($scope, URLS, userService) {
             $scope.urlOne = URLS.URL_ONE;
             $scope.urlTwo = URLS.URL_TWO;
-            $scope.hasPermissionOne = kormsuserService.hasRole('logistics_admin');
-            $scope.hasPermissionTwo = kormsuserService.hasRole('logistics_operations');
+            $scope.hasPermissionOne = userService.hasRole('permission_one');
+            $scope.hasPermissionTwo = userService.hasRole('permission_two');
           }
         ]);
       </script>
