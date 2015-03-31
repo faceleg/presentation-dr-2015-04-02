@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html class="no-js" ng-app="serviceDelivery" data-version="2.0.11-SNAPSHOT 677 2015-04-01_12-33-07">
+  <head>
+    <meta name="url_one" content="https://kcpkrfdev.devtranzrail.co.nz:8444/capacity-r2">
+    <meta name="url_two" content="https://kcapacity-dev.devtranzrail.co.nz/ui">
+    <meta name="url_three" content="https://ktonnage-dev.devtranzrail.co.nz:11443/ui">
+
+    <meta name="user" content="testuser">
+    <meta name="roles" content="planning,planning_admin,capacity_admin,logistics,logistics_admin,logistics_operations">
+    <script>
+      angular.module('app', [])
+      
+        .constant('URLS', {
+          URL_ONE: $('meta[name="urlOne"]').attr('content'),
+          URL_TWO: $('meta[name="urlTwo"]').attr('content'),
+          URL_THREE: $('meta[name="urlThree"]').attr('content')
+        })
+        .constant('USERS', {
+          USER: $('meta[name="username"]').attr('content'),
+          ROLES: $('meta[name="userroles"]').attr('content').split(','),
+        })
+        
+        .service('userService', [
+          'USERS',
+          function(USERS) {
+            return {
+              hasRole: function(role) {
+                return _.intersection(USERS.ROLES, [role]).length > 0;
+              }
+            };
+          }
+        ])
+        
+        .controller('ExampleController', [
+          '$scope', 'URLS', 'userService',
+          function($scope, URLS, userService) {
+            $scope.urlOne = URLS.URL_ONE;
+            $scope.urlTwo = URLS.URL_TWO;
+            $scope.hasPermissionOne = kormsuserService.hasRole('logistics_admin');
+            $scope.hasPermissionTwo = kormsuserService.hasRole('logistics_operations');
+          }
+        ]);
+      </script>
+    </head>
+    <body>
+    <!-- ... -->
+      <div ng-controller="ExampleController">
+        <a ng-href="urlOne" ng-show="hasPermissionOne">URL ONE LINK</a>
+        <a ng-href="urlTwo" ng-show="hasPermissionTwo">URL TWO LINK</a>
+      </div>
+    <!-- ... -->
+    </body>
+  </html>
