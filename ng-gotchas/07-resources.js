@@ -2,7 +2,7 @@ angular.module('app', ['ngResouce'])
   .factory('Train', [
     '$resource', '$http',
     function($resource, $http) {
-      var URL = 'rest/train/instance/:id';
+      var URL = 'train/:id';
       var Train = $resource(URL, {
         id: '@id'
       }, {
@@ -10,7 +10,7 @@ angular.module('app', ['ngResouce'])
           method: 'POST',
           url: URL + '/copy'
         },
-        pushToAmicus: {
+        push: {
           method: 'POST',
           url: URL + '/push',
           transformRequest: function(data, headersGetter) {
@@ -21,13 +21,13 @@ angular.module('app', ['ngResouce'])
         }
       });
 
-      Train.prototype.$resetToGamePlan = function resetToGamePlan(reason) {
-        var resetToGamePlanURL = URL.replace(/:id/, this.id) + '/revert';
+      Train.prototype.$reset = function reset(reason) {
+        var resetURL = URL.replace(/:id/, this.id) + '/revert';
         if (reason.forceSave) {
           delete reason.forceSave;
-          resetToGamePlanURL += '?forcesave=true';
+          resetURL += '?forcesave=true';
         }
-        return $http.post(resetToGamePlanURL, reason).then(function(response) {
+        return $http.post(resetURL, reason).then(function(response) {
           return new Train(response.data);
         });
       };
