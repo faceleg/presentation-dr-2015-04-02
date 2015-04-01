@@ -1,5 +1,5 @@
 angular.module('app', [])
-  .controller('ExampleController', function($timeout) {
+  .controller('ExampleController', function($scope, $timeout) {
     $timeout(function() {
       // do something
     }, 10000);
