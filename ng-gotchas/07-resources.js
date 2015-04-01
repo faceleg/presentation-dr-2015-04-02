@@ -34,3 +34,9 @@ angular.module('app', ['ngResouce'])
       return Train;
     }
   ]);
+
+// Resources are OOP (sort of)
+// Add custom methods to your instances, add custom class methods
+// Group all logic related to your object in one place
+// Hide weirdo code required by the crazy backend
+// Allow the rest of your app to "pretend" a backend is sane in situations where it is not
