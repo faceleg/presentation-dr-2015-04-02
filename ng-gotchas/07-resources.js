@@ -6,6 +6,8 @@ angular.module('app', ['ngResouce'])
       var Train = $resource(URL, {
         id: '@id'
       }, {
+        // Remember we get get, $save, query, $remove, $delete for free. 
+        // Remember you can override the above if required!
         copy: {
           method: 'POST',
           url: URL + '/copy'
@@ -40,3 +42,4 @@ angular.module('app', ['ngResouce'])
 // Group all logic related to your object in one place
 // Hide weirdo code required by the crazy backend
 // Allow the rest of your app to "pretend" a backend is sane in situations where it is not
+// See https://docs.angularjs.org/api/ngResource/service/$resource for more wondrous detail
