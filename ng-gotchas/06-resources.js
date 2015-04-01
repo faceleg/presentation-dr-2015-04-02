@@ -48,3 +48,8 @@ angular.module('app', ['CustomerGroup'])
     // One may immediately use the below object in views (even though it is not immediately resolved)
     $scope.customerGroup = CustomerGroup.get({ id: 1 });
   });
+
+// Do not use $http in your controllers. Use re-usable, encapsulating resources
+// Testable
+// Re-usable
+// Keep controllers slim
