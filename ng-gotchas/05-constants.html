@@ -17,8 +17,8 @@
           URL_THREE: $('meta[name="urlThree"]').attr('content')
         })
         .constant('USERS', {
-          USER: $('meta[name="username"]').attr('content'),
-          ROLES: $('meta[name="userroles"]').attr('content').split(','),
+          USER: $('meta[name="user"]').attr('content'),
+          ROLES: $('meta[name="roles"]').attr('content').split(','),
         })
         
         .service('userService', [
