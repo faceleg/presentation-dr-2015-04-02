@@ -1,5 +1,3 @@
-// Consider normal usage
-
 angular.module('app', [])
   .controller('ExampleController', function($timeout) {
     $timeout(function() {
