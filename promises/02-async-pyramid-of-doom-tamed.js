@@ -1,4 +1,4 @@
-var db = require('./db/promisesDb');
+var db = require('./db/callbackPromise');
 
 db.set('key1', 'value1').then(function(key) {
     return db.set('key2', 'value2');
@@ -7,13 +7,13 @@ db.set('key1', 'value1').then(function(key) {
 }).then(function() {
     return db.get('key1');
 }).then(function(value) {
-    var str += value + ' - ';
-    console.log(str);
-}).catch(function(err)) {
+    console.log('key1 - ' + value);
+}).catch(function(err) {
     console.log('An exception was thrown in one of the above promises');
+    console.log(JSON.stringify(err));
 });
 
-// Example from http://survivejs.com/common_problems/pyramid.html
+// Example adapted from http://survivejs.com/common_problems/pyramid.html
 
 // Can easily re-order execution as required or on a client's whim
 // Error handling does not require copy-paste
