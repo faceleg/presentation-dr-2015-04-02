@@ -1,4 +1,4 @@
-![Callbacks](http://i.dailymail.co.uk/i/pix/2012/12/08/article-2245054-166956B7000005DC-340_634x642.jpg)
+# Promises. Use them
 
 > At their most basic, promises are a bit like event listeners except:
 
@@ -7,3 +7,8 @@
 > This is extremely useful for async success/failure, because you're less interested in the exact time something became available, and more interested in reacting to the outcome
 
 http://www.html5rocks.com/en/tutorials/es6/promises/
+
+## Promises will save you from the Pyramid of Dooom
+
+![Callbacks](http://i.dailymail.co.uk/i/pix/2012/12/08/article-2245054-166956B7000005DC-340_634x642.jpg)
+
