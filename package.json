@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Solnet Promises presentation",
   "main": "01-async-pyramid-of-doom.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/solnetdigital/presentation-digitalrevolution-akl_2015-04-02.git"
@@ -15,9 +12,15 @@
   "bugs": {
     "url": "https://github.com/solnetdigital/presentation-digitalrevolution-akl_2015-04-02/issues"
   },
+  "scripts": {
+    "test": "jasmine-node --color --autotest --watch ./db --growl spec",
+    "coverage": "istanbul cover jasmine-node --color --autotest --watch ./db --growl spec"
+  },
   "homepage": "https://github.com/solnetdigital/presentation-digitalrevolution-akl_2015-04-02",
   "devDependencies": {
     "bluebird": "^2.9.24",
+    "istanbul": "^0.3.13",
+    "jasmine-node": "^1.14.5",
     "lodash": "^3.6.0"
   }
 }
