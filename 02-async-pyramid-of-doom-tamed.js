@@ -17,6 +17,6 @@ db.set('key1', 'value1').then(function(key) {
 
 // Can easily re-order execution as required or on a client's whim
 // Error handling does not require copy-paste
-// Very little indententation - in JS generally, indentation = bad 
-//  "If you need more than 3 levels of indentation, you're screwed 
+// Very little indententation - in JS generally, indentation = bad
+//  "If you need more than 3 levels of indentation, you're screwed
 //  anyway, and should fix your program." -- Linus

@@ -1,25 +1,27 @@
-'use strict'
+'use strict';
 var _ = require('lodash');
 var Promise = require('bluebird');
 
-var db = {};
+var dataStore = {};
 
 var result = {
   contains: function (key) {
-    return _.has(db, key);
+    return new Promise(function(resolve) {
+      resolve(_.has(dataStore, key));
+    });
   },
 
   get: function (key) {
     return new Promise(function(resolve, reject) {
       if (!result.contains(key))
         return reject({error: 'Key not found!'});
-      return resolve(db[key]);
+      return resolve(dataStore[key]);
     });
 
   },
 
   setw: function (key, value) {
-    db[key] = value;
+    dataStore[key] = value;
   },
 
   set: function (key, value) {
@@ -29,7 +31,7 @@ var result = {
       result.setw(key, value);
       return resolve(value);
     });
-
   }
 };
+
 module.exports = result;
