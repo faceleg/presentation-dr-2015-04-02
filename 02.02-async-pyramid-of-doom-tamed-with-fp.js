@@ -1,4 +1,4 @@
-var db = require('./db/callbackPromise');
+var db = require('./db/promiseDb');
 var _ = require('lodash');
 
 var handleSet = _.curry(function (keyToSet, valueToSet, value) {

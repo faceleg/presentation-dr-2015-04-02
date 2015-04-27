@@ -1,4 +1,4 @@
-var db = require('./db/callbackPromise');
+var db = require('./db/promiseDb');
 
 db.set('key1', 'value1').then(function(key) {
     return db.set('key2', 'value2');
